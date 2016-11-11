@@ -174,7 +174,7 @@ class RealFollowersPlus {
 				'X-Requested-With: com.rapidup.royal_followers',
 				'Connection: close'
 				];
-		if($cookies) $x[] = 'Cookie: PHPSESSID=' . $cookies;
+		if($cookies) $x[] = 'Cookie: PHPSESSID=' . $this->cookies;
 		return $x;
 
 	}
