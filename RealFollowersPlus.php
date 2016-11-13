@@ -72,6 +72,38 @@ class RealFollowersPlus {
 		$response = $this->request($base, $body, true);
 		return $response;
 	}
+
+	/*
+		Sedang pengembangan
+	*/
+	public function getLevelBonus(){
+		$this->checkData();
+		$body = 'name=rate&id=2089621&value=1';
+		$base = 'http://insta.starfamous.ru/common/set_complete/';
+
+		$response = $this->request($base, $body, true);
+		return $response;
+	}
+	/*
+		Get News
+	*/
+	public function getNews(){
+		$this->checkData();
+		
+		$base = 'http://insta.starfamous.ru/common/get_news/';
+		$response = $this->request($base, false, true);
+		return $response;
+	}
+	/*
+		Mengambil TOP POST
+	*/
+	public function getTopPost(){
+		$this->checkData();
+		$base = 'http://insta.starfamous.ru/common/get_top/';
+
+		$response = $this->request($base, false, true);
+		return $response;
+	}
 	/*
 		Contoh URL : https://www.instagram.com/kouhota/
 		$id = Instagram ID
@@ -122,7 +154,6 @@ class RealFollowersPlus {
 	}
 	private function request($base, $fields, $cookies = false){
 		$fields = "request=" . $this->encrypt($fields);
-
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $base);
 		curl_setopt($ch, CURLOPT_POST, 1);
@@ -178,7 +209,7 @@ class RealFollowersPlus {
 		return $x;
 
 	}
-	private function getStr($a, $b, $c){
+	public function getStr($a, $b, $c){
 		$d = explode($a, $c);
 		$e = explode($b, $d[1]);
 		return $e[0];
@@ -190,3 +221,4 @@ class RealFollowersPlus {
 	    return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $this->key, hex2bin($text), MCRYPT_MODE_CBC, $iv));
 	}
 }
+?>
